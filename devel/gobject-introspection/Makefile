@@ -28,6 +28,14 @@ USE_LDCONFIG=	yes
 MESON_ARGS=	-Ddoctool=disabled \
 		-Dpython=${PYTHON_CMD}
 
+.include <bsd.port.pre.mk>
+
+.if ${PYTHON_REL} < 31000
+PLIST_SUB+=	PY39="" PY310="@comment "
+.else
+PLIST_SUB+=	PY39="@comment " PY310=""
+.endif
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%PYTHON_CMD%%|${PYTHON_CMD}|' ${WRKSRC}/tools/meson.build
 
@@ -37,4 +45,4 @@ post-stage:
 	@${PYTHON_CMD} -O -m compileall -d ${PREFIX}/lib/${PORTNAME} \
 		"${STAGEDIR}${PREFIX}/lib/${PORTNAME}"
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>
