@@ -56,7 +56,7 @@ post-install-NLS-on:
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MPYTHON}
-.if ${PYTHON_REL} < 3200
+.if ${PYTHON_REL} < 30200
 PYCACHE_DIR=	# none
 PYCACHE_FILE=	scidavisUtil.pyc
 .else

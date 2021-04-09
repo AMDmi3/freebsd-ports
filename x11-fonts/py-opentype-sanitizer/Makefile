@@ -22,7 +22,7 @@ USE_PYTHON=	autoplist concurrent distutils
 
 .include <bsd.port.pre.mk>
 
-.if ${PYTHON_REL} >= 3800
+.if ${PYTHON_REL} >= 30800
 LDFLAGS+=	-lpython${PYTHON_VER}
 .endif
 
