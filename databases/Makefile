@@ -662,6 +662,7 @@
     SUBDIR += postgresql-jdbc
     SUBDIR += postgresql-libpgeasy
     SUBDIR += postgresql-libpqxx
+    SUBDIR += postgresql-libversion
     SUBDIR += postgresql-mysql_fdw
     SUBDIR += postgresql-odbc
     SUBDIR += postgresql-ogr_fdw
