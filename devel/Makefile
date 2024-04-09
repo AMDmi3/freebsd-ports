@@ -5026,6 +5026,7 @@
     SUBDIR += py-lsprotocol
     SUBDIR += py-lunardate
     SUBDIR += py-lxml
+    SUBDIR += py-lxml-html-clean
     SUBDIR += py-lxml-stubs
     SUBDIR += py-mac-vendor-lookup
     SUBDIR += py-macholib
