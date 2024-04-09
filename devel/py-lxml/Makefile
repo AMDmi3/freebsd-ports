@@ -1,5 +1,5 @@
 PORTNAME=	lxml
-PORTVERSION=	4.9.3
+PORTVERSION=	5.2.1
 CATEGORIES=	devel python
 MASTER_SITES=	PYPI
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -10,11 +10,17 @@ WWW=		https://lxml.de/ \
 		https://github.com/lxml/lxml
 
 LICENSE=	BSD3CLAUSE
-LICENSE_FILE=	${WRKSRC}/doc/licenses/BSD.txt
+LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-USES=		compiler cpe gnome python uniquefiles:dirs
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cython3>=0:lang/cython3@${PY_FLAVOR}
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}lxml-html-clean>=0:devel/py-lxml-html-clean@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}cssselect>=0:www/py-cssselect@${PY_FLAVOR}
+
+USES=		cpe gnome python uniquefiles:dirs
 USE_GNOME=	libxml2 libxslt
-USE_PYTHON=	autoplist concurrent cython distutils
+# XXX: this needs USE_PYTHON=cython3, but that's not supported by the framework yet
+# when it is, convert BUILD_DEPENDS onto it
+USE_PYTHON=	autoplist concurrent distutils
 
 LDFLAGS+=	-Wl,-rpath=${LOCALBASE}/lib
 
@@ -40,15 +46,7 @@ post-install-DOCS-on:
 	${INSTALL_DATA} ${DOCS_FILES:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
 	@cd ${WRKSRC} && ${COPYTREE_SHARE} doc ${STAGEDIR}${DOCSDIR}
 
-# see upstream Makefile, test target
 do-test:
-	cd ${WRKSRC} && ${PYTHON_CMD} test.py -p -v
+	cd ${WRKSRC} && ${PYTHON_CMD} test.py -vv
 
-.include <bsd.port.pre.mk>
-
-# if using gcc, force modern GCC due to use of #pragma
-.if ${CHOSEN_COMPILER_TYPE} == gcc
-USE_GCC=	yes
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
