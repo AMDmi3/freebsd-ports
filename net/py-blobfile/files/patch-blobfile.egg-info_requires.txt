@@ -1,0 +1,8 @@
+--- blobfile.egg-info/requires.txt.orig	2023-11-02 23:06:40 UTC
++++ blobfile.egg-info/requires.txt
+@@ -1,4 +1,4 @@ urllib3<3,>=1.25.3
+ pycryptodomex~=3.8
+ urllib3<3,>=1.25.3
+-lxml~=4.9
++lxml>=4.9
+ filelock~=3.0

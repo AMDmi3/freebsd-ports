@@ -1,0 +1,8 @@
+--- draftjs_exporter.egg-info/requires.txt.orig	2022-04-03 22:00:30 UTC
++++ draftjs_exporter.egg-info/requires.txt
+@@ -4,4 +4,4 @@ html5lib<2,>=0.999
+ html5lib<2,>=0.999
+ 
+ [lxml]
+-lxml<5,>=4.2.0
++lxml>=4.2.0

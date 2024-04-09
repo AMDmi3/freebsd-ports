@@ -1,0 +1,8 @@
+--- pymaven_patch.egg-info/requires.txt.orig	2020-09-09 22:53:21 UTC
++++ pymaven_patch.egg-info/requires.txt
+@@ -1,4 +1,4 @@
+-lxml<5.0.0,>=4.0.0
++lxml>=4.0.0
+ requests<3.0.0,>=2.7.0
+ six<2.0,>=1.10
+ 
