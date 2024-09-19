@@ -1,17 +1,19 @@
 PORTNAME=	liblqr-1
-PORTVERSION=	0.4.2
+DISTVERSION=	0.4.3
+DISTVERSIONPREFIX=	v
 CATEGORIES=	graphics
-MASTER_SITES=	http://liblqr.wdfiles.com/local--files/en:download-page/ \
-		https://mirror.amdmi3.ru/distfiles/
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Easy to use C/C++ seam carving library
-WWW=		https://liblqr.wikidot.com/
+WWW=		https://github.com/carlobaldassi/liblqr
 
 LICENSE=	LGPL3
 LICENSE_FILE=	${WRKSRC}/COPYING.LESSER
 
 USES=		gettext gmake gnome libtool pkgconfig tar:bzip2
+USE_GITHUB=	yes
+GH_ACCOUNT=	carlobaldassi
+GH_PROJECT=	liblqr
 GNU_CONFIGURE=	yes
 USE_GNOME=	glib20
 INSTALL_TARGET=	install-strip
@@ -45,11 +47,11 @@ post-build-HTMLDOCS-on:
 	cd ${WRKSRC}/docs && ${SETENV} ${MAKE_ENV} ${MAKE} html
 
 post-install-EXAMPLES-on:
-	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${WRKSRC}/examples/* ${STAGEDIR}${EXAMPLESDIR}
 
 post-install-HTMLDOCS-on:
-	${MKDIR} ${STAGEDIR}${DOCSDIR}
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/docs/html/* ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>
