@@ -1,5 +1,5 @@
 PORTNAME=	powder-toy
-DISTVERSION=	snapshot-374
+DISTVERSION=	snapshot-381
 CATEGORIES=	games
 PKGNAMESUFFIX=	-devel
 
