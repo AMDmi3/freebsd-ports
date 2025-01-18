@@ -20,7 +20,4 @@ RUST_BOOTSTRAP_VERSION=$(awk -F "=" /^compiler_version/'{print $2}' /tmp/stage0)
 echo "BOOTSTRAPS_DATE=${BOOTSTRAPS_DATE}" | portedit merge -i .
 echo "RUST_BOOTSTRAP_VERSION=${RUST_BOOTSTRAP_VERSION}" | portedit merge -i .
 
-make makesum
-echo "lang/rust-nightly: Update to $(make -V PORTVERSION)
-
-https://github.com/rust-lang/rust/compare/${prev_commit}...${new_commit}" >rust-nightly.msg
+sudo make makesum
