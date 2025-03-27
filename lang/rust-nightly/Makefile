@@ -10,6 +10,8 @@ ONLY_FOR_ARCHS_REASON=	upstream does not provide bootstraps for other architectu
 
 CONFLICTS_INSTALL=	rust
 
+OPTIONS_EXCLUDE=	SSE2
+
 MASTERDIR=	${.CURDIR}/../rust
 PATCHDIR=	${.CURDIR}/files
 DISTINFO_FILE=	${.CURDIR}/distinfo
