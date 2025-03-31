@@ -1,12 +1,12 @@
 PORTNAME=	xmoto
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.6.2
-PORTREVISION=	4
+DISTVERSION=	0.6.3
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Challenging 2D motocross platform game
-WWW=		https://xmoto.tuxfamily.org/
+WWW=		https://xmoto.org/ \
+		https://github.com/xmoto/xmoto
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
