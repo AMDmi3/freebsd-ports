@@ -1,5 +1,5 @@
 PORTNAME=	minetestmapper
-PORTVERSION=	20241111
+PORTVERSION=	20250408
 CATEGORIES=	games graphics
 
 MAINTAINER=	amdmi3@FreeBSD.org
