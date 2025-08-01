@@ -1,21 +1,18 @@
 PORTNAME=	7kaa
-PORTVERSION=	2.15.6
-DISTVERSIONPREFIX=	v
+DISTVERSION=	2.15.7
 CATEGORIES=	games
+MASTER_SITES=	SF/skfans/7KAA%20${DISTVERSION}/
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Seven Kingdoms: Ancient Adversaries
-WWW=		https://7kfans.com/
+WWW=		https://7kfans.com/ \
+		https://sourceforge.net/projects/skfans/
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libenet.so:net/enet \
 		libcurl.so:ftp/curl
-BUILD_DEPENDS=	autoconf-archive>=0:devel/autoconf-archive
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	the3dfxdude
 
 USES=		autoreconf compiler:c++11-lang gettext-tools gmake localbase \
 		openal:al pkgconfig sdl iconv
@@ -23,7 +20,7 @@ USE_SDL=	sdl2
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-multiplayer
 
-CXXFLAGS+=	-fPIC -Dregister=
+CXXFLAGS+=	-fPIC
 
 PORTDOCS=	*
 PORTDATA=	*
