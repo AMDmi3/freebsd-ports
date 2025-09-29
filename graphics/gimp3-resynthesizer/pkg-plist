@@ -1,0 +1,8 @@
+%%PLUGIN_DIR%%/plug-in-heal-selection/plug-in-heal-selection.scm
+%%PLUGIN_DIR%%/plug-in-heal-transparency/plug-in-heal-transparency.scm
+%%PLUGIN_DIR%%/plug-in-map-style/plug-in-map-style.scm
+%%PLUGIN_DIR%%/plug-in-render-texture/plug-in-render-texture.scm
+%%PLUGIN_DIR%%/plug-in-resynth-controls/plug-in-resynth-controls.scm
+%%PLUGIN_DIR%%/plug-in-resynth-fill-pattern/plug-in-resynth-fill-pattern.scm
+%%PLUGIN_DIR%%/plug-in-uncrop/plug-in-uncrop.scm
+%%PLUGIN_DIR%%/resynthesizer/resynthesizer
