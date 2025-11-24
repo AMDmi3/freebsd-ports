@@ -1,0 +1,13 @@
+--- test/CMakeLists.txt.orig	2025-11-22 08:03:42 UTC
++++ test/CMakeLists.txt
+@@ -14,7 +14,7 @@ add_executable(StormLib_test ${TEST_SRC_FILES})
+ 
+ find_package(ALSA REQUIRED)
+ add_executable(StormLib_test ${TEST_SRC_FILES})
+-target_link_libraries(StormLib_test storm ${ALSA_LIBRARIES})
++target_link_libraries(StormLib_test storm ALSA::ALSA)
+ install(TARGETS StormLib_test RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+-add_test(NAME StormLib_test COMMAND StormLib_test)
+\ No newline at end of file
++add_test(NAME StormLib_test COMMAND StormLib_test)
