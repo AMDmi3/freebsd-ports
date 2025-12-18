@@ -1,4 +1,4 @@
---- scripts/test-ancillary-files.sh.orig	2024-03-23 13:57:27 UTC
+--- scripts/test-ancillary-files.sh.orig	2025-05-05 14:23:21 UTC
 +++ scripts/test-ancillary-files.sh
 @@ -1,4 +1,5 @@
  #!/bin/sh
@@ -6,21 +6,30 @@
  #**********************************************************************
  # Copyright (C) 2024 - The Geeqie Team
  #
-@@ -63,7 +64,7 @@ done << EOF
+@@ -60,7 +61,7 @@ done << EOF
  		fi
  	fi
  done << EOF
--$(find "$1/plugins" "$1/src" "$1/scripts" -type f -executable)
-+$(find "$1/plugins" "$1/src" "$1/scripts" -type f -perm +u=x)
+-$(find "./plugins" "./src" "./scripts" -type f -not -name downsize -executable)
++$(find "./plugins" "./src" "./scripts" -type f -not -name downsize -perm +u=x)
+ EOF
+ 
+ # Script files must have the file extension .sh  or
+@@ -84,7 +85,7 @@ done << EOF
+ 		fi
+ 	fi
+ done << EOF
+-$(find "./plugins" "./src" "./scripts" -type f -executable)
++$(find "./plugins" "./src" "./scripts" -type f -perm +u=x)
  EOF
  
  # Check if all options are in the disabled checks
-@@ -199,7 +200,7 @@ else
+@@ -218,7 +219,7 @@ else
  		if [ -n "$line" ]
  		then
  			desktop_file=$(basename "$line" ".in")
--			ln --symbolic "$line" "$1/$desktop_file"
-+			ln -s "$line" "$1/$desktop_file"
- 			result=$(desktop-file-validate "$1/$desktop_file")
+-			ln --symbolic "$line" "./$desktop_file"
++			ln -s "$line" "./$desktop_file"
+ 			result=$(desktop-file-validate "./$desktop_file")
  
- 			rm "$1/$desktop_file"
+ 			rm "./$desktop_file"
