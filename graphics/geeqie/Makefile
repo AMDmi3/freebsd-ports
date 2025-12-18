@@ -1,7 +1,6 @@
 PORTNAME=	geeqie
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.4
-PORTREVISION=	8
+DISTVERSION=	2.6
 CATEGORIES=	graphics
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -12,7 +11,7 @@ LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 RUN_DEPENDS=	bash:shells/bash
-BUILD_DEPENDS=	xxd:sysutils/xxd
+#BUILD_DEPENDS=	xxd:sysutils/xxd
 TEST_DEPENDS=	appstreamcli:devel/appstream
 
 USES=		desktop-file-utils gettext-tools gnome jpeg \
@@ -27,15 +26,20 @@ MESON_ARGS=	-Ddoxygen=disabled
 MESON_ARGS+=	-Dpandoc=disabled
 MESON_ARGS+=	-Devince=disabled
 MESON_ARGS+=	-Dgit=disabled
+MESON_ARGS+=	-Dnpy=enabled
+MESON_ARGS+=	-Dhelp_pdf=disabled
 
 PORTDOCS=	*
 PORTDATA=	*
 
-OPTIONS_DEFINE=	EXIV2 LCMS MAP FFMPEGTHUMBNAILER ARCHIVE SPELL DOCS NLS
+OPTIONS_DEFINE=	EXIV2 LCMS MAP FFMPEGTHUMBNAILER ARCHIVE SPELL \
+		NPY EXTENDED_STACKTRACE DOCS NLS
 OPTIONS_DEFAULT=EXIV2 LCMS MAP FFMPEGTHUMBNAILER ARCHIVE SPELL \
-		TIFF PDF HEIF DJVU OPENJPEG RAW JXL WEBP
+		TIFF PDF HEIF DJVU OPENJPEG RAW JXL WEBP \
+		OPENEXR FITS
 OPTIONS_GROUP=	FORMATS
-OPTIONS_GROUP_FORMATS=	TIFF PDF HEIF DJVU OPENJPEG RAW JXL WEBP
+OPTIONS_GROUP_FORMATS=	TIFF PDF HEIF DJVU OPENJPEG RAW JXL WEBP \
+			OPENEXR FITS
 OPTIONS_SUB=	yes
 
 FORMATS_DESC=	Image formats support
@@ -89,6 +93,22 @@ SPELL_DESC=		Spelling check through gspell
 SPELL_MESON_ENABLED=	spell
 SPELL_LIB_DEPENDS=	libgspell-1.so:textproc/gspell
 
-DOCS_BUILD_DEPENDS=	yelp-build:textproc/yelp-tools
+OPENEXR_MESON_ENABLED=	exr
+OPENEXR_LIB_DEPENDS=	libOpenEXR.so:graphics/openexr \
+			libImath.so:math/Imath
+
+FITS_DESC=		FITS format support
+FITS_MESON_ENABLED=	fits
+FITS_LIB_DEPENDS=	libcfitsio.so:astro/cfitsio
+
+EXTENDED_STACKTRACE_DESC=		Extended stacktrace support
+EXTENDED_STACKTRACE_MESON_ENABLED=	extended_stacktrace
+EXTENDED_STACKTRACE_LIB_DEPENDS=	libdw.so:devel/elfutils
+# 					libunwind.so:devel/libunwind
+
+DOCS_USES=		python:build
+DOCS_BUILD_DEPENDS=	yelp-build:textproc/yelp-tools \
+			yelp-xsl>0:textproc/yelp-xsl \
+			${PYTHON_PKGNAMEPREFIX}lxml>0:devel/py-lxml@${PY_FLAVOR}
 
 .include <bsd.port.mk>
