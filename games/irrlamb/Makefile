@@ -1,7 +1,6 @@
 PORTNAME=	irrlamb
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.0.6
-PORTREVISION=	2
+DISTVERSION=	1.0.7
 CATEGORIES=	games
 DIST_SUBDIR=	${PORTNAME}
 
@@ -16,24 +15,20 @@ LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libvorbis.so:audio/libvorbis \
 		libogg.so:audio/libogg \
 		libpng.so:graphics/png \
-		libtinyxml2.so:textproc/tinyxml2 \
-		libIrrlicht.so:x11-toolkits/irrlicht \
-		libode.so:devel/ode \
-		libccd.so:math/libccd
+		libtinyxml2.so:textproc/tinyxml2
 BUILD_DEPENDS=	${LOCALBASE}/include/glm/vec3.hpp:math/glm
 
 USES=		cmake compiler:c++11-lib gl jpeg openal sqlite xorg lua:53
 USE_GITLAB=	yes
 GL_ACCOUNT=	irrlamb
 GL_PROJECT=	code
-GL_TUPLE=	jazztickets:cmake:486362ce74eaf6b26067576a8b6b03dcad27a7a5:cmake/cmake
+GL_TAGNAME=	dev
+GL_TUPLE=	jazztickets:cmake:43b00a9a30448bcd08e03c6b104c5ac64b7a457f:cmake/cmake
 USE_XORG=	x11 xrandr xext xxf86vm
 USE_GL=		gl
 CONFIGURE_ENV=	LOCALBASE="${LOCALBASE}"
 
 LDFLAGS_i386=	-Wl,-znotext
-
-CXXFLAGS+=	-DGLM_ENABLE_EXPERIMENTAL  # GLM_GTX_rotate_vector is an experimental extension
 
 PORTDOCS=	*
 PORTDATA=	*
@@ -41,7 +36,7 @@ PORTDATA=	*
 OPTIONS_DEFINE=	DOCS
 
 post-extract:
-.for bundled in glm irrlicht libccd lua tinyxml2 ode
+.for bundled in glm lua tinyxml2
 	@${RM} -r ${WRKSRC}/src/${bundled}
 .endfor
 
