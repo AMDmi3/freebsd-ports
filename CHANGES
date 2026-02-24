@@ -10,6 +10,15 @@ in the release notes and/or placed into UPDATING.
 
 All ports committers are allowed to commit to this file.
 
+20260226:
+AUTHOR: amdmi3@FreeBSD.org
+
+  JAVA_VERSION now allows "default" and "latest" settings.
+  Maintainers are encouraged to switch their ports to "default"
+  unless specific older or newer version is required, to avoid
+  ports from using unnecessary old java version, and unnecessary
+  bringing multiple versions of openjdk.
+
 20251111:
 AUTHOR: kiwi@FreeBSD.org
 

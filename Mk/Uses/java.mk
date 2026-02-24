@@ -29,8 +29,11 @@
 #
 # JAVA_VERSION		List of space-separated suitable java versions for the
 #			port. An optional "+" allows you to specify a range of
-#			versions. (allowed values: 8[+] 11[+] 17[+]
-#			20[+] 21[+] 22[+] 23[+] 24[+] 25[+])
+#			versions. Alternatively, a keyword "default" to use
+#			default version from bsd.default-version.mk (or later) or
+#			"latest" to use the latest available version. (allowed
+#			values: default latest 8[+] 11[+] 17[+] 20[+] 21[+] 22[+]
+#			23[+] 24[+] 25[+])
 #
 # JAVA_OS		List of space-separated suitable JDK port operating systems
 #			for the port. (allowed values: native linux)
@@ -275,7 +278,7 @@ check-makevars::
 # Error checking: JAVA_VERSION
 .  if defined(JAVA_VERSION)
 .    if !defined(_JAVA_VERSION_LIST_REGEXP)
-_JAVA_VERSION_LIST_REGEXP=	${_JAVA_VERSION_LIST:C/\+/\\+/:ts|}
+_JAVA_VERSION_LIST_REGEXP=	${_JAVA_VERSION_LIST:C/\+/\\+/:ts|}|latest|default
 .    endif
 
 check-makevars::
@@ -310,7 +313,11 @@ check-makevars::
 # JDK dependency setting
 .		undef _JAVA_PORTS_INSTALLED
 .		undef _JAVA_PORTS_POSSIBLE
-.  if defined(JAVA_VERSION)
+.  if defined(JAVA_VERSION) && ${JAVA_VERSION} == "latest"
+_JAVA_VERSION=	${__JAVA_VERSION_LIST:Orn:[1]}
+.  elif defined(JAVA_VERSION) && ${JAVA_VERSION} == "default"
+_JAVA_VERSION=	${JAVA_DEFAULT:S/$/+/:S/^8+/8 11+/:S/^11+/11 17+/:S/^17+/17 20+/:S/^20+/20 21+/:S/^21+/21 22+/:S/^22+/22 23+/:S/^23+/23 24+/:S/^24+/24 25+/:S/^25+/25/}
+.  elif defined(JAVA_VERSION)
 _JAVA_VERSION=	${JAVA_VERSION:S/^8+/8 11+/:S/^11+/11 17+/:S/^17+/17 20+/:S/^20+/20 21+/:S/^21+/21 22+/:S/^22+/22 23+/:S/^23+/23 24+/:S/^24+/24 25+/:S/^25+/25/}
 .  else
 _JAVA_VERSION=	${__JAVA_VERSION_LIST}
