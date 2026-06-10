@@ -1,0 +1,13 @@
+bin/playsound3
+include/SDL3_sound/SDL_sound.h
+lib/cmake/SDL3_sound/SDL3_sound-shared-targets-%%CMAKE_BUILD_TYPE%%.cmake
+lib/cmake/SDL3_sound/SDL3_sound-shared-targets.cmake
+lib/cmake/SDL3_sound/SDL3_sound-static-targets-%%CMAKE_BUILD_TYPE%%.cmake
+lib/cmake/SDL3_sound/SDL3_sound-static-targets.cmake
+lib/cmake/SDL3_sound/SDL3_soundConfig.cmake
+lib/cmake/SDL3_sound/SDL3_soundConfigVersion.cmake
+lib/libSDL3_sound.a
+lib/libSDL3_sound.so
+lib/libSDL3_sound.so.0
+lib/libSDL3_sound.so.%%LIBVERSION%%
+libdata/pkgconfig/sdl3-sound.pc
