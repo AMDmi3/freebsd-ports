@@ -13,7 +13,7 @@
 _INCLUDE_USES_7Z_MK=	yes
 
 7-ZIP_CMD?=		7zz
-7-ZIP_BEFORE_ARGS?=	x -bd -y -o${7-ZIP_WRKDIR} >/dev/null
+7-ZIP_BEFORE_ARGS?=	x -bd -y -o${7-ZIP_WRKDIR} ${EXTRACT_EXCLUDE:C/(.*)/-x \1/g}>/dev/null
 7-ZIP_AFTER_ARGS?=	# empty
 7-ZIP_WRKDIR?=		${EXTRACT_WRKDIR}
 

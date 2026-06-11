@@ -51,7 +51,6 @@ DESKTOP_ENTRIES="${GH_PROJECT}" \
 		"${PORTNAME}" \
 		"Game;ArcadeGame;" \
 		""
-EXTRACT_AFTER_ARGS=${EXCLUDE:S,^,--exclude ExternalLibs/,}
 SUB_FILES=	pkg-message
 
 PLIST_FILES=	bin/aquaria
@@ -68,6 +67,7 @@ SDL2_CMAKE_BOOL=AQUARIA_USE_SDL2
 
 EXCLUDE=	AL FTGL GL SDL* freetype2 glm glpng/png glpng/zlib \
 		libogg-* libvorbis-* lua-* tinyxml2*
+EXTRACT_EXCLUDE=${EXCLUDE:S,^,ExternalLibs/,}
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin

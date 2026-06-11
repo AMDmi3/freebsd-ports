@@ -17,14 +17,12 @@ PLIST_SUB=	PORTNAME=${PORTNAME}
 SUB_LIST=	PORTNAME=${PORTNAME}
 SCRIPTS=	aasdoc acompc amxmlc asdoc compc copylocale digest \
 		fcsh fdb mxmlc optimizer
+EXTRACT_EXCLUDE=bin/*.bat bin/*.exe
 
 NO_BUILD=	yes
 NO_WRKSUBDIR=	yes
 
 OPTIONS_DEFINE=	DOCS
-
-post-extract:
-	${RM} ${WRKSRC}/bin/*.bat ${WRKSRC}/bin/*.exe
 
 do-install:
 .for i in ${SCRIPTS}
