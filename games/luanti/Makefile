@@ -23,7 +23,11 @@ CMAKE_ARGS=	-DCUSTOM_EXAMPLE_CONF_DIR="${PREFIX}/etc" \
 CMAKE_ON=	ENABLE_SYSTEM_JSONCPP
 CMAKE_OFF=	BUILD_DOCUMENTATION
 
-TEST_ENV=	${MAKE_ENV}
+# make sure bundled depends are not used
+# bundled lua is OK, there's no option to use system one
+EXTRACT_EXCLUDE=lib/gmp lib/jsoncpp
+
+TEST_ENV=	${MAKE_ENV} LC_ALL=C.UTF-8
 
 LDFLAGS_i386=	-Wl,-znotext
 
@@ -98,11 +102,6 @@ USE_RC_SUBR=	minetest
 USERS=		minetest
 GROUPS=		minetest
 .endif
-
-post-extract:
-# make sure no bundled gmp is used
-	@${RM} -rf ${WRKSRC}/lib/gmp ${WRKSRC}/lib/jsoncpp
-# bundled lua is OK, there's no option to use system one
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' \

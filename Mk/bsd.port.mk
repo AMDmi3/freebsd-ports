@@ -687,6 +687,8 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 # EXTRACT_AFTER_ARGS
 #				- Arguments to ${EXTRACT_CMD} following filename.
 #				  Default: "--no-same-owner --no-same-permissions"
+# EXTRACT_EXCLUDE
+#				- Path patterns to exclude from archive extraction.
 # For patch:
 #
 # EXTRA_PATCHES	- Define this variable if you have patches not in
@@ -2141,7 +2143,7 @@ TAR?=	/usr/bin/tar
 # EXTRACT_SUFX is defined in .pre.mk section
 EXTRACT_CMD?=	${TAR}
 EXTRACT_BEFORE_ARGS?=	-xf
-EXTRACT_AFTER_ARGS?=	--no-same-owner --no-same-permissions
+EXTRACT_AFTER_ARGS?=	--no-same-owner --no-same-permissions ${EXTRACT_EXCLUDE:C/(.*)/--exclude \1/g}
 
 # Figure out where the local mtree file is
 .    if !defined(MTREE_FILE) && !defined(NO_MTREE)
