@@ -10,6 +10,15 @@ in the release notes and/or placed into UPDATING.
 
 All ports committers are allowed to commit to this file.
 
+20260611
+AUTHOR: amdmi3@FreeBSD.org
+
+  Introduced EXTRACT_EXCLUDE, allowing to define path patterns to
+  exclude from extraction. This works for tar (default), USES=zip,
+  and USES=7z (but pattern semantics may vary between extractors)
+  and should generally be preferred to defining EXTRACT_AFTER_ARGS=
+  --extract ... by hand.
+
 20251111:
 AUTHOR: kiwi@FreeBSD.org
 

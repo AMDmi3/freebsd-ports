@@ -45,6 +45,9 @@ CMAKE_OFF=	FMT_INSTALL \
 		WZ_ENABLE_WARNINGS_AS_ERRORS \
 		WZ_FORCE_MINIMAL_OPUSFILE
 CMAKE_ARGS=	-DWZ_DISTRIBUTOR="FreeBSD ports"
+EXTRACT_EXCLUDE=3rdparty/miniupnp \
+		3rdparty/SQLiteCpp/sqlite3 \
+		lib/sound/3rdparty
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
@@ -69,11 +72,5 @@ FRIBIDI_CMAKE_OFF=	-DCMAKE_DISABLE_FIND_PACKAGE_Fribidi=TRUE
 post-patch:
 	@${FIND} ${WRKSRC} -type f -iname "*cmake*" -exec \
 		${REINPLACE_CMD} -i '' -e '/find_package(Git/d' {} \;
-
-post-extract:
-.for bundled in miniupnp SQLiteCpp/sqlite3
-	@${RM} -rf ${WRKSRC}/3rdparty/${bundled}
-.endfor
-	@${RM} -rf ${WRKSRC}/lib/sound/3rdparty
 
 .include <bsd.port.mk>
