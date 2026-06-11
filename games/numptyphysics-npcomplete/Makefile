@@ -16,10 +16,7 @@ NO_BUILD=	yes
 NO_ARCH=	yes
 WRKSRC=		${WRKDIR}/npcomplete
 DATADIR=	${PREFIX}/share/numptyphysics
-
-post-extract:
-# this level will crash the game
-	@${RM} "${WRKSRC}/L02_bridge Gaps tut.nph"
+EXTRACT_EXCLUDE="L02_bridge Gaps tut.nph" # this level crashes the game
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}

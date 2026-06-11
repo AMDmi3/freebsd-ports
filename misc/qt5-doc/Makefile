@@ -21,14 +21,11 @@ WRKSRC=		${WRKDIR}/Docs/Qt-${QT5_VERSION}
 
 USES=		7z qt:5
 USE_QT=		# we just need access to QT5_VERSION and other variables.
+EXTRACT_EXCLUDE=Makefile global
 
 DESCR=		${.CURDIR:H:H}/devel/qt5/pkg-descr
 NO_ARCH=	yes
 NO_BUILD=	yes
-
-post-extract:
-	${RM} ${WRKSRC}/Makefile
-	${RM} -r ${WRKSRC}/global
 
 do-install:
 	${MKDIR} ${STAGEDIR}${QT_DOCDIR}
