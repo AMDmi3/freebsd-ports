@@ -1,6 +1,6 @@
 PORTNAME=	reprise
 PORTVERSION=	0.6.1
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	ports-mgmt python
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -18,7 +18,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}aiohttp>=0:www/py-aiohttp@${PY_FLAVOR} \
 TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>=0:devel/py-pytest@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytest-asyncio>=0:devel/py-pytest-asyncio@${PY_FLAVOR}
 
-USES=		python
+USES=		python:3.12+
 USE_GITHUB=	yes
 GH_ACCOUNT=	AMDmi3
 USE_PYTHON=	autoplist distutils noflavors
