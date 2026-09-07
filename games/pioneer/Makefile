@@ -1,5 +1,5 @@
 PORTNAME=	pioneer
-DISTVERSION=	20260203
+DISTVERSION=	20260907
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -31,7 +31,7 @@ LIB_DEPENDS=	libassimp.so:multimedia/assimp \
 		libsigc-2.0.so:devel/libsigc++20 \
 		libvorbisfile.so:audio/libvorbis
 
-USES=		cmake compiler:c++17-lang gl gnome lua:52 pkgconfig sdl
+USES=		cmake compiler:c++17-lang gl gnome lua:52 openal pkgconfig sdl
 USE_GITHUB=	yes
 USE_GL=		gl glu glew
 USE_SDL=	image2 sdl2
