@@ -1,5 +1,5 @@
 PORTNAME=	chromono
-PORTVERSION=	1.1.1
+PORTVERSION=	1.1.3
 CATEGORIES=	games
 MASTER_SITES=	https://thp.io/2013/chromono/
 
