@@ -1,9 +1,10 @@
 PORTNAME=	mineclonia
-PORTVERSION=	0.123.0
+PORTVERSION=	0.124.1
 CATEGORIES=	games
 MASTER_SITES=	https://content.luanti.org/uploads/
 PKGNAMEPREFIX=	luanti-
-DISTNAME=	62d9e3fc63
+DISTNAME=	b29a3227e2
+DIST_SUBDIR=	mineclonia
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Survival sandbox game inspired by Minecraft
