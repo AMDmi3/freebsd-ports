@@ -1,5 +1,5 @@
 PORTNAME=	mari0
-PORTVERSION=	1.6.2
+PORTVERSION=	1.6.3
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -27,6 +27,9 @@ DESKTOP_ENTRIES="Mari0" \
                 "${PORTNAME}" \
                 "Game;ArcadeGame;" \
                 ""
+
+post-extract:
+	@cd ${WRKSRC} && ${RM} -r .git*
 
 do-install:
 	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/ \
